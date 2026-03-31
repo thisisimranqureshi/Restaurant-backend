@@ -50,4 +50,18 @@ router.post('/', protect, async (req, res) => {
   }
 });
 
+// GET single invoice by ID
+router.get('/:id', protect, async (req, res) => {
+  try {
+    const invoice = await Invoice.findOne({ 
+      _id: req.params.id, 
+      user: req.user.id 
+    });
+    if (!invoice) return res.status(404).json({ message: 'Invoice not found' });
+    res.json(invoice);
+  } catch (err) {
+    res.status(500).json({ message: 'Server error', error: err.message });
+  }
+});
+
 module.exports = router;
