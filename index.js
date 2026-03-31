@@ -13,6 +13,8 @@ app.use(express.json());
 app.use('/api/auth', require('./routes/auth'));
 app.use('/api/menu', require('./routes/menu'));
 app.use('/api/billing', require('./routes/billing'));
+const usageRoute = require('./routes/UsageRoutes');
+app.use('/api/usage', usageRoute);
 
 
 // MongoDB Connection
