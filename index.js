@@ -17,7 +17,7 @@ const usageRoute = require('./routes/UsageRoutes');
 app.use('/api/usage', usageRoute);
 
 
-// MongoDB Connection
+// Database Connection
 mongoose.connect(process.env.MONGO_URI)
   .then(() => console.log('✅ MongoDB Connected'))
   .catch((err) => console.log('❌ DB Error:', err));
